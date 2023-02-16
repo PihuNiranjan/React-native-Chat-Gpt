@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import axios from "axios";
-import Key from "../key";
+import { Key } from "@env";
 
 export default function Main() {
   const [text, setText] = useState("");
@@ -31,7 +31,7 @@ export default function Main() {
         headers: {
           "Content-Type": "application/json",
           Connection: "keep-alive",
-          Authorization: "Bearer " + Key,
+          Authorization: `Bearer ${Key}`,
         },
       })
       .then((response) => {
@@ -149,6 +149,7 @@ export default function Main() {
 
       <ScrollView style={styles.container}>
         <Text style={{ fontSize: 15, marginTop: -20 }}>{data}</Text>
+        {/* <Text style={{ fontSize: 15, marginTop: -20 }}>{Key}</Text> */}
       </ScrollView>
 
       <Text style={{ fontWeight: "bold", marginVertical: 15, fontSize: 15 }}>
