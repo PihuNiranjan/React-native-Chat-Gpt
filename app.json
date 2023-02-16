@@ -23,7 +23,7 @@
     "android": {
       "package":"myproject.openai",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images.png",
         "backgroundColor": "#FFFFFF"
       }
     },

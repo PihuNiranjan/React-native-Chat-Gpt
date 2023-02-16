@@ -10,28 +10,16 @@ import {
   View,
   Image,
 } from "react-native";
-import Constants from "expo-constants";
 import { useState } from "react";
 import axios from "axios";
-const token = "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";
+import Key from "../key";
 
 export default function Main() {
   const [text, setText] = useState("");
   const [number, setNumber] = useState(0);
   const [data, setdata] = useState("");
 
-  // const headers = {
-  //   "Content-Type": "application/json",
-  //   Connection: "keep-alive",
-  //   Authorization: `Bearer ${token}`,
-  // };
-
   const getRespo = () => {
-    console.log("function call hua");
-    console.log(text);
-    console.log(number);
-    console.log(text);
-
     const data = {
       model: "text-davinci-003",
       prompt: text,
@@ -43,12 +31,11 @@ export default function Main() {
         headers: {
           "Content-Type": "application/json",
           Connection: "keep-alive",
-          Authorization: "Bearer " + token,
+          Authorization: "Bearer " + Key,
         },
       })
       .then((response) => {
         console.log(response.data);
-        console.log(response.data.choices[0].text);
         setdata(response.data.choices[0].text);
       })
       .catch((error) => console.log("ERROR : ", error.response));
@@ -160,21 +147,13 @@ export default function Main() {
         </TouchableOpacity>
       </View>
 
-      {/* <StatusBar
-        animated={true}
-        barStyle="light-content"
-        showHideTransition="fade"
-        style="dark"
-      /> */}
       <ScrollView style={styles.container}>
         <Text style={{ fontSize: 15, marginTop: -20 }}>{data}</Text>
       </ScrollView>
 
-      {/* <View style={{ justifyContent: "flex-end", alignItems: "flex-end" }}> */}
       <Text style={{ fontWeight: "bold", marginVertical: 15, fontSize: 15 }}>
         Develop by Piyush
       </Text>
-      {/* </View> */}
     </SafeAreaView>
   );
 }
